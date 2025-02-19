@@ -1,0 +1,30 @@
+SphinxとGitHub Pagesによるドキュメンテーション環境のセットアップ
+########################################################
+ローカル執筆環境の構築
+========================================================
+公式Docker image（`sphinxdoc/sphinx <https://hub.docker.com/r/sphinxdoc/sphinx>`_）を使って `Sphinx <https://www.sphinx-doc.org/ja/master/>`_  をつかったドキュメンテーション環境を構築します。
+
+ディレクトリ構成
+--------------------------------------------------------
+
+Dockerfileの作成
+--------------------------------------------------------
+
+.. tip:: 
+    - 文章作成以外のローカルでのビルド、ブラウザのリロードを自動化してくれる `sphinx-doc/sphinx-autobuild <https://github.com/sphinx-doc/sphinx-autobuild>`_ を導入しましょう
+    - `Sphinx Themes Gallery <https://sphinx-themes.org/>`_ に好みのデザインがあれば導入しましょう
+
+.. sourcecode:: Docker
+    :linenos:
+
+      FROM sphinxdoc/sphinx
+      
+      ENV TZ=Asia/Tokyo 
+      ENV LANG=C.UTF-8
+      
+      WORKDIR /docs
+      RUN pip3 install sphinx-autobuild
+    
+
+GitHubPagesでの公開
+========================================================
